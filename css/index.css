@@ -1,0 +1,104 @@
+body {
+    font-family: 'Pangolin-Regular';
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+header nav {
+    border-bottom-left-radius: 4%;
+    border-bottom-right-radius: 4%;
+    
+    background-color: rgb(81, 81, 185);
+    /*background-color: rgb(250, 229, 133);*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+#logo h1 {
+    font-size: 30px;
+    padding-left: 10px;
+    color: white;
+    transition: filter 0.5s ease;
+}
+#logo h1:hover {
+    filter: brightness(70%);
+}
+
+#lang_buttons {
+    display: flex;
+    align-items: center;
+}
+
+#lang_buttons img {
+    height: 45px;
+    width: 90px;
+    object-fit: cover;
+    margin: 5px;
+    border-radius: 6px;
+    transition: filter 0.3s ease;
+}
+
+#lang_buttons img:hover{
+    filter: brightness(70%);
+}
+
+#lang_buttons img:active {
+    filter: brightness(40%);
+    transition: none;
+}
+
+/* main */
+main {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* background-color: rgb(238, 232, 197); */
+    background-color: rgb(106, 128, 201);
+    width: 20%;
+    height: 400px;
+    margin: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* aside (bottom navigation) */
+
+aside {
+    position: fixed;
+    bottom: 5px;
+    width: 75%;
+    height: 75px;
+
+    left: 50%;
+    margin-left: -37.5%;
+
+}
+
+aside nav {
+    height: 100%;
+    background-color: rgb(95, 95, 189);
+    border-radius: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside nav div {
+    font-size: 25px;
+    background-color: aqua;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
