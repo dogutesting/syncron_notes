@@ -70,8 +70,9 @@ main {
 }
 
 .card {
+    font-family: 'Pangolin-Regular';
     background-color: rgb(214, 207, 169);
-    height: 400px;
+    height: 500px;
     overflow: hidden;
     box-sizing: border-box;
     margin: 10px;
@@ -86,30 +87,68 @@ main {
     border-bottom: 2px solid black;
     padding: 6px;
     padding-top: 10px;
+    align-items: center;
+    background-color: rgb(212, 200, 132);
 }
 .top_bar_card h3 {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 24px;
+    text-align: left;
+    width: 85%;
+
 }
 .top_bar_card_right_buttons {
     display: flex;
     justify-content: space-between;
+    padding-right: 6px;
+    padding-left: 6px;
+    width: 15%;
+}
+.sync {
+    margin-right: 8px;
+    color: #5e5c64;
 }
 .finish_icon {
-    margin-right: 16px;
+    margin-right: 8px;
     color: #5e5c64;
 }
 .finish_icon:hover {
-    color: #28272b;
+    /* color: #28272b; */
+    color: rgb(60, 216, 40);
     cursor: pointer;
+}
+.finish_icon:active {
+    color: rgb(32, 141, 17);
 }
 .delete_icon {
     color: #5e5c64;
 }
 .delete_icon:hover {
-    color: #28272b;
+    /* color: #28272b; */
+    color: #e92121;
     cursor: pointer;
 }
+.delete_icon:active {
+    color: #8f0a0a;
+}
+.main_card {
+    
+}
+.main_card p {
+    text-align: left;
+    padding: 6px;
+    margin: 0;
+    font-size: 20px;
+    overflow-x: auto;
+}
+.main_card p:hover{
+    background-color: #5e5c6428;
+    
+}
+
 
 /* aside (bottom navigation) */
 
