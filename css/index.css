@@ -1,9 +1,10 @@
 body {
-    font-family: 'Pangolin-Regular';
+    
 }
 
 /* header */
 header {
+    font-family: 'Pangolin-Regular';
     position: fixed;
     top: 0;
     width: 100%
@@ -26,9 +27,6 @@ header nav {
     color: white;
     transition: filter 0.5s ease;
 }
-#logo h1:hover {
-    filter: brightness(70%);
-}
 
 #lang_buttons {
     display: flex;
@@ -45,6 +43,7 @@ header nav {
 }
 
 #lang_buttons img:hover{
+    cursor: pointer;
     filter: brightness(70%);
 }
 
@@ -58,18 +57,58 @@ main {
     margin-top: 100px;
     margin-bottom: 100px;
 
-    display: flex;
+    
+    /* display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start */
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .card {
-    /* background-color: rgb(238, 232, 197); */
-    background-color: rgb(106, 128, 201);
-    width: 20%;
+    background-color: rgb(214, 207, 169);
     height: 400px;
-    margin: 5px;
-    box-sizing: border-box;
     overflow: hidden;
+    box-sizing: border-box;
+    margin: 10px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.top_bar_card {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    padding: 6px;
+    padding-top: 10px;
+}
+.top_bar_card h3 {
+    margin: 0;
+    padding: 0;
+}
+.top_bar_card_right_buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.finish_icon {
+    margin-right: 16px;
+    color: #5e5c64;
+}
+.finish_icon:hover {
+    color: #28272b;
+    cursor: pointer;
+}
+.delete_icon {
+    color: #5e5c64;
+}
+.delete_icon:hover {
+    color: #28272b;
+    cursor: pointer;
 }
 
 /* aside (bottom navigation) */
