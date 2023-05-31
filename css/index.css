@@ -1,9 +1,10 @@
 body {
-    
+    max-width: 1920px;
+    margin: 0 auto;
 }
-
 /* header */
 header {
+    max-width: 1920px;
     font-family: 'Pangolin-Regular';
     position: fixed;
     top: 0;
@@ -14,25 +15,22 @@ header nav {
     border-bottom-right-radius: 4%;
     
     background-color: rgb(81, 81, 185);
-    /*background-color: rgb(250, 229, 133);*/
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     user-select: none;
 }
-
 #logo h1 {
     font-size: 30px;
     padding-left: 10px;
     color: white;
     transition: filter 0.5s ease;
 }
-
 #lang_buttons {
     display: flex;
     align-items: center;
 }
-
 #lang_buttons img {
     height: 45px;
     width: 90px;
@@ -41,17 +39,14 @@ header nav {
     border-radius: 6px;
     transition: filter 0.3s ease;
 }
-
 #lang_buttons img:hover{
     cursor: pointer;
     filter: brightness(70%);
 }
-
 #lang_buttons img:active {
     filter: brightness(40%);
     transition: none;
 }
-
 /* main */
 main {
     margin-top: 100px;
@@ -68,7 +63,6 @@ main {
     padding-left: 10px;
     padding-right: 10px;
 }
-
 .card {
     font-family: 'Pangolin-Regular';
     background-color: rgb(214, 207, 169);
@@ -80,39 +74,40 @@ main {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-
 .top_bar_card {
     display: flex;
-    justify-content: space-between;
     border-bottom: 2px solid black;
-    padding: 6px;
-    padding-top: 10px;
     align-items: center;
     background-color: rgb(212, 200, 132);
+    height: 7%;
+    
+    justify-content: space-between;
+
+    padding: 5px;
 }
 .top_bar_card h3 {
     margin: 0;
-    padding: 0;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 24px;
+    font-size: 22px;
     text-align: left;
-    width: 85%;
+    width: 80%;
 
+    margin-right: 5px;
+    width: 79%;
 }
 .top_bar_card_right_buttons {
     display: flex;
     justify-content: space-between;
-    padding-right: 6px;
-    padding-left: 6px;
-    width: 15%;
+    align-items: center;
+    width: 20%;
 }
 .sync {
-    margin-right: 8px;
+    /* margin-right: 8px; */
     color: #5e5c64;
 }
 .finish_icon {
-    margin-right: 8px;
+    /* margin-right: 8px; */
     color: #5e5c64;
 }
 .finish_icon:hover {
@@ -135,48 +130,25 @@ main {
     color: #8f0a0a;
 }
 .main_card {
-    
+    height: 92.3%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.main_card::-webkit-scrollbar {
+    width: 0;
+}
+.main_card::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.main_card::-webkit-scrollbar-thumb {
+    background-color: transparent;
 }
 .main_card p {
     text-align: left;
     padding: 6px;
     margin: 0;
     font-size: 20px;
-    overflow-x: auto;
 }
 .main_card p:hover{
     background-color: #5e5c6428;
-    
-}
-
-
-/* aside (bottom navigation) */
-
-aside {
-    position: fixed;
-    bottom: 5px;
-    width: 75%;
-    height: 75px;
-
-    left: 50%;
-    margin-left: -37.5%;
-
-}
-
-aside nav {
-    height: 100%;
-    background-color: rgb(95, 95, 189);
-    border-radius: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-aside nav div {
-    font-size: 25px;
-    background-color: aqua;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
 }
