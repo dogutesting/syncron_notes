@@ -5,6 +5,7 @@ console.log("Loaded");
 var isEnterFree;
 
 function makeEditable(element, bool) {
+    
     element.contentEditable = true;
     isEnterFree = bool;
     //burada mysql'e kaydetme işlemini başlatman lazım

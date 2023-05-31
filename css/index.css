@@ -51,14 +51,10 @@ header nav {
 main {
     margin-top: 100px;
     margin-bottom: 100px;
-
-    
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start */
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    transition: grid-template-columns 0.3s ease;
+
     justify-content: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -66,23 +62,24 @@ main {
 .card {
     font-family: 'Pangolin-Regular';
     background-color: rgb(214, 207, 169);
-    height: 500px;
+    height: 400px;
     overflow: hidden;
     box-sizing: border-box;
     margin: 10px;
     text-align: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+
+    opacity: 1;
+    transition: opacity 0.2s ease;
 }
 .top_bar_card {
     display: flex;
-    border-bottom: 2px solid black;
     align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
     background-color: rgb(212, 200, 132);
     height: 7%;
-    
-    justify-content: space-between;
-
     padding: 5px;
 }
 .top_bar_card h3 {
@@ -91,27 +88,28 @@ main {
     white-space: nowrap;
     font-size: 22px;
     text-align: left;
-    width: 80%;
-
-    margin-right: 5px;
-    width: 79%;
+    flex: 1;
 }
 .top_bar_card_right_buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 20%;
+}
+.top_bar_card_right_buttons > div {
+    margin-left: 5px;
+}
+.sync,
+.finish_icon,
+.delete_icon {
+  flex-shrink: 0;
 }
 .sync {
-    /* margin-right: 8px; */
     color: #5e5c64;
 }
 .finish_icon {
-    /* margin-right: 8px; */
     color: #5e5c64;
 }
 .finish_icon:hover {
-    /* color: #28272b; */
     color: rgb(60, 216, 40);
     cursor: pointer;
 }
@@ -151,4 +149,57 @@ main {
 }
 .main_card p:hover{
     background-color: #5e5c6428;
+}
+
+@media only screen and (max-width: 1200px) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card {
+        animation: fadeIn-1200 0.6s ease;
+    }
+}
+@media only screen and (max-width: 900px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card {
+        animation: fadeIn-900 0.6s ease;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .card {
+        animation: fadeIn-600 0.6s ease;
+    }
+}
+
+@keyframes fadeIn-1200 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes fadeIn-900 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes fadeIn-600 {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
 }
