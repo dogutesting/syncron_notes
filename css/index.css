@@ -1,3 +1,8 @@
+:root {
+    --var-h3: #5e5c6450;
+    --var-p: #5e5c6411;
+    /* --var-p:  */
+}
 body {
     max-width: 1920px;
     margin: 0 auto;
@@ -83,13 +88,36 @@ main {
     padding: 5px;
 }
 .top_bar_card h3 {
+    /* overflow: hidden; */
+
+    overflow-x: scroll;
+    scrollbar-width: none;
+
     margin: 0;
-    overflow: hidden;
     white-space: nowrap;
     font-size: 22px;
     text-align: left;
     flex: 1;
+    /* border-radius: 2px; */
+    border-radius: 4px;
+    padding: 2px;
 }
+.top_bar_card h3::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+.top_bar_card h3::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.top_bar_card h3::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.top_bar_card h3:hover {
+    /* background-color: #5e5c6427; */
+    background-color: #5e5c6450;
+}
+
 .top_bar_card_right_buttons {
     display: flex;
     justify-content: space-between;
@@ -128,9 +156,14 @@ main {
     color: #8f0a0a;
 }
 .main_card {
-    height: 92.3%;
+    height: 90.3%;
     overflow-y: scroll;
     scrollbar-width: none;
+}
+.main_card:hover {
+    /* background-color: #5e5c6411; */
+    background-color: var(--var-p);
+    cursor: text;
 }
 .main_card::-webkit-scrollbar {
     width: 0;
@@ -146,10 +179,12 @@ main {
     padding: 6px;
     margin: 0;
     font-size: 20px;
+    border: none;
 }
-.main_card p:hover{
-    background-color: #5e5c6428;
+[contenteditable] {
+    outline: 0px solid transparent;
 }
+
 
 @media only screen and (max-width: 1200px) {
     main {
