@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
+    <title>Sync Notes</title>
 
     <style>
         @font-face {
@@ -13,11 +13,12 @@
         }
     </style>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
-
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="css/search_bar.css">
+    <script src="js/index.js"></script>
 
 </head>
 <body>
@@ -25,9 +26,21 @@
     <header>
         <nav>
             <div id="logo">
-                <h1>To Do Lists</h1>
+                <h1>Sync Notes</h1>
             </div>
-
+            <div id="mid_nav">
+                <div id="add_card_cont" title="Not ekle">
+                    <i id="add_cart_button" class="fa-solid fa-circle-plus fa-2xl"></i>
+                </div>
+                <div id="search_div">
+                    <div>
+                        <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">
+                    </div>
+                    <div>
+                        <i id="search_button" class="fa-solid fa-magnifying-glass fa-xl" style="color: white;"></i>
+                    </div>
+                </div>
+            </div>
             <div id="lang_buttons">
                 <img src="imgs/tr.png" alt="Türkçe Dil Desteği">
                 <img src="imgs/en.png" alt="English Language">
@@ -37,9 +50,10 @@
     </header>
 
     <main id="myGrid">
+        <!-- 
         <div class="card">
             <div class="top_bar_card">
-                <h3 onmouseover="startScrolling(this)" onmouseout="stopScrolling(this)" contenteditable="true" onkeydown="enterDisable(event)" onblur="handleBlurOnH3(this)">Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
+                <h3 contenteditable="true" onkeydown="enterDisable(event)" onblur="handleBlurOnH3(this)">Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
                 <div class="top_bar_card_right_buttons">
                     <div class="sync" title="Senkron">
                         <i class="fa-solid fa-rotate fa-lg"></i>
@@ -53,90 +67,12 @@
                 </div>
             </div>
             <div class="main_card" onclick="enableEditingForP(this, event)">
-                <p contenteditable="true" onclick="fuckOffPropagation(event)" onblur="handleBlurOnP(this)">1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                <p contenteditable="true" onclick="getLostPropagation(event)" onblur="handleBlurOnP(this)">1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
             </div>
         </div>
+        -->
 
-        <div class="card">
-            <div class="top_bar_card">
-                <h3>Aceq Yapılacaklar Listesi şimdi buradan ooo 741852963741852963963852741852963</h3>
-                <div class="top_bar_card_right_buttons">
-                    <div class="sync" title="Senkron">
-                        <i class="fa-solid fa-rotate fa-lg"></i>
-                    </div>
-                    <div class="finish_icon" title="Bitirililenler listesine ekle.">
-                        <i class="fa-sharp fa-solid fa-circle-check fa-lg"></i>
-                    </div>
-                    <div class="delete_icon" title="Sil">
-                        <i class="fa-solid fa-trash fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="main_card">
-                <p>1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="top_bar_card">
-                <h3>Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
-                <div class="top_bar_card_right_buttons">
-                    <div class="sync" title="Senkron">
-                        <i class="fa-solid fa-rotate fa-lg"></i>
-                    </div>
-                    <div class="finish_icon" title="Bitirililenler listesine ekle.">
-                        <i class="fa-sharp fa-solid fa-circle-check fa-lg"></i>
-                    </div>
-                    <div class="delete_icon" title="Sil">
-                        <i class="fa-solid fa-trash fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="main_card">
-                <p>1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="top_bar_card">
-                <h3>Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
-                <div class="top_bar_card_right_buttons">
-                    <div class="sync" title="Senkron">
-                        <i class="fa-solid fa-rotate fa-lg"></i>
-                    </div>
-                    <div class="finish_icon" title="Bitirililenler listesine ekle.">
-                        <i class="fa-sharp fa-solid fa-circle-check fa-lg"></i>
-                    </div>
-                    <div class="delete_icon" title="Sil">
-                        <i class="fa-solid fa-trash fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="main_card">
-                <p>1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="top_bar_card">
-                <h3>Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
-                <div class="top_bar_card_right_buttons">
-                    <div class="sync" title="Senkron">
-                        <i class="fa-solid fa-rotate fa-lg"></i>
-                    </div>
-                    <div class="finish_icon" title="Bitirililenler listesine ekle.">
-                        <i class="fa-sharp fa-solid fa-circle-check fa-lg"></i>
-                    </div>
-                    <div class="delete_icon" title="Sil">
-                        <i class="fa-solid fa-trash fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="main_card">
-                <p>1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-            </div>
-        </div>
+        
 
     </main>
 
