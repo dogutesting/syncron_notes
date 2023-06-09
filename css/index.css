@@ -13,7 +13,10 @@ header {
     font-family: 'Pangolin-Regular';
     position: fixed;
     top: 0;
-    width: 100%
+    width: 100%;
+
+    display:flex;
+    flex-direction: column;
 }
 header nav {
     border-bottom-left-radius: 4%;
@@ -53,9 +56,30 @@ header nav {
     transition: none;
 }
 /* main */
-main {
+#search_settings {
+    margin: 0 auto;
     margin-top: 100px;
-    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+#search_settings .brd {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* border-radius: 5px; */
+
+    border: 1px solid black;
+    padding: 10px;
+    font-size: larger;
+}
+#search_settings .brd:hover {
+    cursor: pointer;
+}
+main {
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     transition: grid-template-columns 0.3s ease;
@@ -184,14 +208,35 @@ main {
     display: flex;
     align-items: center;
 }
-#add_card_cont {
+#left_buttons {
+    display: flex;
+    flex-direction: row;
+}
+#left_buttons div {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+#left_buttons div i {
+    color: white;
+}
+#left_buttons div i:hover {
+    color: rgb(153, 153, 153);
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+/* #add_card_cont {
     margin-right: 5px;
     color: white;
+    display: flex;
+    align-items: center;
 }
 #add_card_cont:hover {
     color: rgb(153, 153, 153);
     cursor: pointer;
-}
+} */
 #search_div {
     display: flex;
     align-items: center;

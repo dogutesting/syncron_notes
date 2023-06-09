@@ -29,15 +29,24 @@
                 <h1>Sync Notes</h1>
             </div>
             <div id="mid_nav">
-                <div id="add_card_cont" title="Not ekle">
-                    <i id="add_cart_button" class="fa-solid fa-circle-plus fa-2xl"></i>
+                <div id="left_buttons">
+                    <div id="list_type_button" title="Sıralam tipleri">
+                        <i class="fa-solid fa-arrow-up-a-z fa-2xl"></i>
+                        <i class="hidden fa-solid fa-arrow-down-z-a fa-2xl"></i>
+                        <i class="hidden fa-solid fa-calendar-arrow-up fa-2xl"></i>
+                        <i class="hidden fa-solid fa-calendar-arrow-down fa-2xl"></i>
+                    </div>
+                    <div id="add_card_button" title="Not ekle">
+                        <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                    </div>
                 </div>
+                
                 <div id="search_div">
                     <div>
                         <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">
                     </div>
                     <div>
-                        <i id="search_button" class="fa-solid fa-magnifying-glass fa-xl" style="color: white;"></i>
+                        <i id="search_button" class="fa-solid fa-gear fa-xl" style="color: white;"></i>
                     </div>
                 </div>
             </div>
@@ -48,6 +57,17 @@
             </div>
         </nav>
     </header>
+    
+    <div id="search_settings">
+        <div>
+            <h2 style="margin: 0; padding: 0; text-align: center;">Gün</h2>
+            <div class="brd">Hepsi</div>
+        </div>
+        <div>
+            <h2 style="margin: 0; padding: 0; text-align: center;">Durum</h2>
+            <div class="brd">Normal</div>
+        </div>
+    </div>
 
     <main id="myGrid">
         <!-- 
@@ -71,9 +91,6 @@
             </div>
         </div>
         -->
-
-        
-
     </main>
 
 </body>

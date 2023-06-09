@@ -61,6 +61,7 @@
             $(this).stop().animate({scrollLeft: 0}, 2000);
         }); */
 
+        
         $('body').on('wheel', "h3", function(event) {
             event.preventDefault();
             $(this).stop();
@@ -77,28 +78,33 @@
         
         /* 
         //! Note for me
-        arrow function'da "this" anahtar kelimesi çalışmıyormuş
-        onun yerine "event.currentTarget" kullanılmalıymış.
-        $("h3").on("mouseenter", (event) => {
-            log($(event.currentTarget).attr("id"));
-        }) 
-    
-        $("h3").on("mouseenter", function(event) => {
-            log($(this).attr("id"));
-        }) 
+        -> sonradan eklenen elemanları görebilmek için $('body') kullanıyorum.;
+        
+        -> arrow function'da "this" anahtar kelimesi çalışmıyormuş
+            onun yerine "event.currentTarget" kullanılmalıymış.
+            $("h3").on("mouseenter", (event) => {
+                log($(event.currentTarget).attr("id"));
+            }) 
+        
+            $("h3").on("mouseenter", function(event) => {
+                log($(this).attr("id"));
+            }) 
         */
 
         //on start
         $.ajax({
             url: 'php/get_cards.php',
             type: 'POST',
-            data: {"list_type": 'type_0', "day": "all", "stat": "normal"},
+            data: {"day": "all", "list_desc": "31_to_1", "stat": "normal"},
             success: function(response) {
-              var jsonData = JSON.parse(response);
-              $("myGrid").empty();
-              for(var i=0; i<jsonData.length; i++) {
-                $("#myGrid").append(jsonData[i]);
-              }
+                //console.log(response);
+                
+                var jsonData = JSON.parse(response);
+                
+                $("myGrid").empty();
+                for(var i=0; i<jsonData.length; i++) {
+                    $("#myGrid").append(jsonData[i]);
+                }
             },
             /*
             error: function(error) {
@@ -108,8 +114,98 @@
 
 
         //button clicks
-        $("#add_cart_button").on("click", () => {
+        $("body").on("click", ".delete_icon", function() {
+            //1
+            //var targetId = $(this).parent().parent().parent().attr("data-id");
 
+            //2
+            var target = $(this).parents().eq(2);
+            var targetId = $(target).attr("data-id");
+            $.ajax({
+                url: 'php/change_card_status.php',
+                type: 'POST',
+                data: {"pro": "delete", "id": targetId},
+                success: function(response) {
+                    //var jsonData = JSON.parse(response);
+                    if(response == "1") {
+                        notificationText("Silinenlere eklendi.");
+                        
+                        //1
+                        //$(target).remove();
+
+                        //2
+                        $(target).fadeOut("300", function() {
+                            $(this).remove();
+                        });
+                    }
+                    else {
+                        error();
+                    }
+                }
+            });
+
+        }).on("click", ".finish_icon", function () {
+            var target = $(this).parents().eq(2);
+            var targetId = $(target).attr("data-id");
+            $.ajax({
+                url: 'php/change_card_status.php',
+                type: 'POST',
+                data: {"pro": "finish","id": targetId},
+                success: function(response) {
+                    //var jsonData = JSON.parse(response);
+                    if(response == "1") {
+                        notificationText("Tamamlananlara eklendi.");
+                        
+                        //1
+                        //$(target).remove();
+
+                        //2
+                        $(target).fadeOut("300", function() {
+                            $(this).remove();
+                        });
+                    }
+                    else {
+                        error();
+                    }
+                }
+            });
+        });
+
+        $("#add_card_button").on("click", () => {
+            //solution 1: show add card modal
+            //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+            //set head, body text and add to main
+
+            //solution 2: add card directly to main and mysql database
+            $.ajax({
+                url: 'php/add_card.php',
+                type: 'POST',
+                success: function(response) {
+                    var jsonData = JSON.parse(response);
+                    //console.log(jsonData["card"]);
+                    if(!jsonData["error"]) {
+                        //response 1
+                        $("#myGrid > div:first").before(jsonData["card"]);
+
+                        //response 2
+                        //response içerisinde alayını tekrar döndürebilirim. Bir kaç nedenim var ama şimdilik kullanmamayı tercih ediyorum.
+                        /* $("#myGrid").empty();
+                        for(var i=0; i<jsonData.length; i++) {
+                            $("#myGrid").append(jsonData[i]);
+                        } */
+                    }
+                    else {
+                        //neden success: function() içerisinde hata mesajı yazıyorum zaten bunun için error: function() var?
+                        //bende bunu kendime soruyorum.
+                        error();
+                    }
+    
+                },
+                error: function() {
+                    bigError();
+                }
+            });
+            
         });
 
         //kodlanmadı
@@ -118,13 +214,15 @@
             $.ajax({
                 url: 'php/search_cards.php',
                 type: 'POST',
-                data: {"list_type": 'type_0', "day": "all", "stat": "normal"},
+                //specific day or to day | stat: normal, finished, deleted | 
+                //list_type: a_to_z, z_to_a, 1_to_31, 31_to_1
+                data: {"search_text": search_text},
                 success: function(response) {
-                  var jsonData = JSON.parse(response);
-                  $("myGrid").empty();
-                  for(var i=0; i<jsonData.length; i++) {
-                    $("#myGrid").append(jsonData[i]);
-                  }
+                    var jsonData = JSON.parse(response);
+                    $("#myGrid").empty();
+                    for(var i=0; i<jsonData.length; i++) {
+                        $("#myGrid").append(jsonData[i]);
+                    }
                 },
                 /*
                 error: function(error) {
@@ -134,11 +232,31 @@
 
         });
 
-        //kodlanmadı
-        $("#search_button").on("click", () => {
-            //$("#search_input").val();
+        var i_array = [];
+        $("#list_type_button i").each(function() {
+            i_array.push(this);
+        });
+        $("#list_type_button").on("click", function() {
+            
+        });
+
+        $("#settings_button").on("click", () => {
+            alert("Buraya pop up ayarlar yeri yapılacak");
         })
-        
+
+        function notificationText(text) {
+            //maybe i wil add notificationtext but now it will be normal alert
+            alert(text);
+        }
+
+        function error() {
+            alert("Beklenmedik bir hata");
+        }
+
+        function bigError() {
+            alert("Acayip bir hata ile karşılaşıldı. Programcıyı düşündürecek türden bir hata bu.");
+        }
+
         function log(data) {
             console.log(data);
         }
