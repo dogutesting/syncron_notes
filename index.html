@@ -20,36 +20,55 @@
     <link rel="stylesheet" href="css/search_bar.css">
     <script src="js/index.js"></script>
 
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
 </head>
 <body>
     
+
     <header>
         <nav>
             <div id="logo">
                 <h1>Sync Notes</h1>
             </div>
+
             <div id="mid_nav">
+                
                 <div id="left_buttons">
-                    <div id="list_type_button" title="Sıralam tipleri">
+                    <div id="list_type_buttons" title="Sıralama tipleri" active="0">
                         <i class="fa-solid fa-arrow-up-a-z fa-2xl"></i>
                         <i class="hidden fa-solid fa-arrow-down-z-a fa-2xl"></i>
+                        <i class="hidden fa-solid fa-arrow-up fa-2xl"></i>
+                        <i class="hidden fa-solid fa-arrow-down fa-2xl"></i>
+                        <!-- idk why but this i elements not working <-(0_0)->
                         <i class="hidden fa-solid fa-calendar-arrow-up fa-2xl"></i>
-                        <i class="hidden fa-solid fa-calendar-arrow-down fa-2xl"></i>
+                        <i class="hidden fa-solid fa-calendar-arrow-down fa-2xl"></i> -->
                     </div>
                     <div id="add_card_button" title="Not ekle">
                         <i class="fa-solid fa-circle-plus fa-2xl"></i>
                     </div>
                 </div>
                 
-                <div id="search_div">
-                    <div>
-                        <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">
+                <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">                    
+
+                <div id="right_buttons">
+                    <div id="stat_list_buttons" active="0">
+                        <i class="fa-solid fa-list fa-2xl"></i>
+                        <i class="hidden fa-sharp fa-solid fa-circle-check fa-2xl"></i>
+                        <i class="hidden fa-solid fa-trash fa-2xl"></i>
                     </div>
                     <div>
-                        <i id="search_button" class="fa-solid fa-gear fa-xl" style="color: white;"></i>
+                        <i id="pick_date" title="" class="fa-solid fa-calendar-days fa-2xl"></i>
                     </div>
+                    
                 </div>
             </div>
+
             <div id="lang_buttons">
                 <img src="imgs/tr.png" alt="Türkçe Dil Desteği">
                 <img src="imgs/en.png" alt="English Language">
@@ -57,17 +76,6 @@
             </div>
         </nav>
     </header>
-    
-    <div id="search_settings">
-        <div>
-            <h2 style="margin: 0; padding: 0; text-align: center;">Gün</h2>
-            <div class="brd">Hepsi</div>
-        </div>
-        <div>
-            <h2 style="margin: 0; padding: 0; text-align: center;">Durum</h2>
-            <div class="brd">Normal</div>
-        </div>
-    </div>
 
     <main id="myGrid">
         <!-- 
@@ -95,6 +103,3 @@
 
 </body>
 </html>
-
-<!-- 45.. add note, a-z sırala, oluşturma tarihine göre sırala -->
-<!-- V işareti ile işaretlenebilen madde madde için yeni bir branch aç, bu ise basit nor alma olsun -->

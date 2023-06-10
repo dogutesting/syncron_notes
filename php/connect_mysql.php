@@ -38,6 +38,8 @@
             $list_desc = mysqli_real_escape_string($this->conn, $list_desc);
             $stat = mysqli_real_escape_string($this->conn, $stat);
 
+            //$day comes with 3 types all, single date 10.06.2023, 2 date 09.06.2023(-)10.06.2023
+            
             $sql = "";
 
             if($day == "all") {
