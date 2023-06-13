@@ -1,0 +1,22 @@
+{
+    "logo": "Font'u değiştir",
+    "az": "A'dan Z'ye",
+    "za": "Z'den A'ya",
+    "ey": "Eskiden yeniye",
+    "ye": "Yeniden eskiye",
+    "add_card_button": "Not ekle",
+    "search_input": "Notlarınızda arama yapın.",
+    "normal": "Normal",
+    "ends": "Bitirilenler",
+    "deletes": "Silinenler",
+    "senkron0": "Senkron",
+    "senkron1": "Senkronize ediliyor...",
+    "emptyGrid0": "Aradığın notu bulamadım. Muhtemelen böyle bir not yok.",
+    "emptyGrid1": "Henüz not oluşturmamışsın gibi. Ya da uygulama hata mı verdi?",
+    "emptyGrid2": "Böyle bir şeyi bitirmemiş olabilir misin? Belki de hiç başlamadın.",
+    "emptyGrid3": "Henüz bir şey bitirmemişsin gibi. Umarım kodlamayı yanlış yazmışımdır.",
+    "emptyGrid4": "Aradığını bende bulamadın demek. Bir ayrılık cümlesi gibi.",
+    "emptyGrid5": "Silinenler klasörü boş gözüküyor. Yakında dolar. Uzakta euro.",
+    "bigError": "Acayip bir hata ile karşılaşıldı. Programcıyı düşündürecek türden bir hata bu.",
+    "error": "Beklenmedik bir hata. Hazırlıksız yakalandım."
+}

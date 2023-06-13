@@ -33,10 +33,13 @@
 
         //$sql = "SELECT * FROM notes";
 
-        public function get_rows($day, $list_desc, $stat) {
+        public function get_rows($search_text, $day, $list_desc, $stat, $lang) {
+            $search_text = mysqli_real_escape_string($this->conn, $search_text);
             $day = mysqli_real_escape_string($this->conn, $day);
             $list_desc = mysqli_real_escape_string($this->conn, $list_desc);
             $stat = mysqli_real_escape_string($this->conn, $stat);
+            $lang = mysqli_real_escape_string($this->conn, $lang);
+
 
             //$day comes with 3 types all, single date 10.06.2023, 2 date 09.06.2023(-)10.06.2023
             
@@ -45,10 +48,20 @@
             if($day == "all") {
                 $sql = "SELECT * FROM notes WHERE stat='$stat'";
             }
+            // STR_TO_DATE('11.06.23', '%d.%m.%y')
             else {
-                $sql = "SELECT * FROM notes WHERE creation_date ='$day' AND stat='$stat'";
+                if(str_contains($day, "(-)")) {
+                    $days = explode("(-)", $day);
+                    $sql = "SELECT * FROM notes WHERE creation_date BETWEEN STR_TO_DATE('$days[0]', '%d/%m/%y') AND STR_TO_DATE('$days[1]', '%d/%m/%y') AND stat='$stat'";
+                }
+                else {
+                    $sql = "SELECT * FROM notes WHERE creation_date =STR_TO_DATE('$day', '%d/%m/%y') AND stat='$stat'";
+                }
             }
-
+            if($search_text != "") {
+                $sql .= " AND (LOWER(head) LIKE LOWER('%$search_text%') OR LOWER(body) LIKE LOWER('%$search_text%'))";
+            }
+            
             if($list_desc == "31_to_1") {
                 $sql .= " ORDER BY id_notes DESC";
             }
@@ -62,10 +75,11 @@
                 $sql .= " ORDER BY SUBSTRING(head, 1, 1) DESC";
             }
 
-            return $this->get_mysql($sql);
+            return $this->get_mysql($sql, $lang);
+            //return $sql;
         }
 
-        private function get_mysql($sql) {
+        private function get_mysql($sql, $lang) {
             $cardArray = array();
             $n = 0;
             $result = $this->conn->query($sql);
@@ -77,7 +91,7 @@
                                                     $row["creation_date"],
                                                     $row["last_sync_date"],
                                                     $row["stat"]);
-                    $cardArray[$n] = $createCard->getCardDiv();
+                    $cardArray[$n] = $createCard->getCardDiv($lang);
                     $n+=1;
                 }
             }
@@ -85,52 +99,44 @@
             return $cardArray;
         }
 
-        public function search_rows($search_text) {
-            $search_text = mysqli_real_escape_string($this->conn, $search_text);
-            $sql_search = "SELECT * FROM notes WHERE LOWER(head) LIKE LOWER('%$search_text%') OR LOWER(body) LIKE LOWER('%$search_text%')";
-            $cardArray = array();
-            $n = 0;
-            $result = $this->conn->query($sql_search);
+        public function get_min_date() {
+            $result = $this->conn->query("SELECT MIN(creation_date) AS min_date FROM notes");
+            $minDate = '';
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $createCard = new card_class($row["id_notes"], 
-                                                    $row["head"],
-                                                    $row["body"],
-                                                    $row["creation_date"],
-                                                    $row["last_sync_date"],
-                                                    $row["stat"]);
-                    $cardArray[$n] = $createCard->getCardDiv();
-                    $n+=1;
+                    $minDate = $row['min_date'];
                 }
+            } else {
+                $minDate = "non";
             }
             $this->close_connection();
-            return $cardArray;
+            return $minDate;
         }
 
         //add unkown row
         public function add_row() {
-            $gun = date("d");    // Günü alır (01-31)
-            $ay = date("m");     // Ayı alır (01-12)
-            $yil = date("y");
-
             $head = "Başlık yazın.";
             $body = "İçerik yazın.";
             $stat = "normal";
-            $creation_date = $gun.'.'.$ay.'.'.$yil;
 
-            $sql_insert = "INSERT INTO notes (head, body, stat, creation_date) VALUES ('$head', '$body', '$stat', '$creation_date')";
-            $res = "";
+            $t = time();
+            $creation_date = date("Y-m-d", $t);
+            //currentTime = date("Y-m-d H:i:s")
+            $current_time = date("H:i:s");
+            $sync_date_one_piece = $creation_date."|".$current_time;
+
+            $sql_insert = "INSERT INTO notes (head, body, stat, creation_date, last_sync_date) VALUES ('$head', '$body', '$stat', '$creation_date', '$sync_date_one_piece')";
+
             $rData = array(
                 "error"=> false,
                 "card"=> "cardString"
             );
             if($this->conn->query($sql_insert) === true) {
-                //$res = "suc";
                 $createCard = new card_class($this->conn->insert_id, 
                                              $head,
                                              $body,
                                              $creation_date,
-                                             "0",
+                                             $sync_date_one_piece,
                                              $stat);
                 $rData["error"] = false;
                 $rData["card"] = $createCard->getCardDiv();
@@ -144,7 +150,47 @@
             return $rData;
         }
 
-        public function f_or_d_row($pro, $id) {
+        public function update_rows($change, $id, $text) {
+            $change = mysqli_real_escape_string($this->conn, $change);
+            $id = mysqli_real_escape_string($this->conn, $id);
+            $text = mysqli_real_escape_string($this->conn, $text);
+
+            $sql = "";
+            $t = time();
+            $sync_date = date("Y-m-d", $t);
+            //currentTime = date("Y-m-d H:i:s")
+            $currentTime = date("H:i:s");
+            $ls_one_piece = $sync_date."|".$currentTime;
+
+            //1
+            //maybe this can be dangerous?
+            //$sql = "UPDATE notes SET  $change = '$text', last_sync_date = '$sync_date - $currentTime' WHERE id_notes = '$id' AND stat = 'normal'";
+
+            //2
+            if($change == "top") {    
+                $sql = "UPDATE notes SET head = '$text', last_sync_date = '$ls_one_piece' WHERE id_notes = '$id' AND stat = 'normal'";
+            }
+            //else? idw t use else right now
+            if($change == "body") {
+                $sql = "UPDATE notes SET body = '$text', last_sync_date = '$ls_one_piece' WHERE id_notes = '$id' AND stat = 'normal'";
+            }
+
+            //$rt = "";
+            $rt = array(
+                "ok"=> true,
+                "sync_date"=> date("d/m/Y", strtotime($sync_date)) . "-" . $currentTime
+            );
+            if($this->conn->query($sql) === true) {
+                $rt["ok"] = true;
+            }
+            else {
+                $rt["ok"] = false;
+            }
+            $this->close_connection();
+            return $rt;
+        }
+
+        public function f_or_d_row($pro, $id) { //finish or delete row
             $id = mysqli_real_escape_string($this->conn, $id);
             $sql = "UPDATE notes SET stat = '$pro' WHERE id_notes = '$id'";
             $rt = "";

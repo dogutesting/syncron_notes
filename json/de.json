@@ -1,0 +1,22 @@
+{
+    "logo": "Schriftart ändern",
+    "az": "Von A nach Z",
+    "za": "Von Z nach A",
+    "ey": "Von Alt zu Neu",
+    "ye": "Von Neu zu Alt",
+    "add_card_button": "Notiz hinzufügen",
+    "search_input": "In Ihren Notizen suchen.",
+    "normal": "Normal",
+    "ends": "Abgeschlossen",
+    "deletes": "Gelöscht",
+    "senkron0": "Synchronizität",
+    "senkron1": "Synchronisierung...",
+    "emptyGrid0": "Ich konnte die gesuchte Notiz nicht finden. Vielleicht gibt es so eine Notiz nicht.",
+    "emptyGrid1": "Es scheint, dass Sie noch keine Notizen erstellt haben. Oder vielleicht hat die App einen Fehler geworfen?",
+    "emptyGrid2": "Vielleicht haben Sie so etwas nicht beendet. Oder vielleicht haben Sie noch nicht einmal angefangen.",
+    "emptyGrid3": "Sie haben noch nichts abgeschlossen. Hoffentlich habe ich den Code falsch geschrieben.",
+    "emptyGrid4": "Es scheint, dass Sie in mir nicht finden konnten, wonach Sie gesucht haben. Wie ein Satz einer Trennung.",
+    "emptyGrid5": "Der Papierkorb erscheint leer. Wie der größte Teil des Weltraums.",
+    "bigError": "Ein außergewöhnlicher Fehler ist aufgetreten. Eine Art Fehler, der den Programmierer zum Nachdenken bringt.",
+    "error": "Ein unerwarteter Fehler. Ich wurde unvorbereitet erwischt."
+}

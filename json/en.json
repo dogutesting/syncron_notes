@@ -1,0 +1,22 @@
+{
+    "logo": "Change Font",
+    "az": "A to Z",
+    "za": "Z to A",
+    "ey": "Old to New",
+    "ye": "New to Old",
+    "add_card_button": "Add Note",
+    "search_input": "Search in Your Notes.",
+    "normal": "Normal",
+    "ends": "Completed",
+    "deletes": "Deleted",
+    "senkron0": "Sync",
+    "senkron1": "Syncing...",
+    "emptyGrid0": "I couldn't find the note you were looking for. Maybe there is no such note.",
+    "emptyGrid1": "It seems like you haven't created any notes yet. Or maybe the app threw an error?",
+    "emptyGrid2": "You may not have finished something like this. Or maybe you haven't even started.",
+    "emptyGrid3": "You haven't finished anything yet. Hopefully, I must have written the code wrong.",
+    "emptyGrid4": "It seems like you couldn't find what you were looking for in me. Like a breakup sentence.",
+    "emptyGrid5": "The folder containing the deleted files seems to be empty. Just like most of space.",
+    "bigError": "An extraordinary error occurred. A kind of error that will make the programmer think.",
+    "error": "An unexpected error. I was caught unprepared."
+}

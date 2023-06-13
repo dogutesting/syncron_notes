@@ -11,13 +11,21 @@
             font-family: "Pangolin-Regular";
             src: url("fonts/Pangolin-Regular.ttf");
         }
+        @font-face {
+            font-family: "Roboto-Medium";
+            src: url("fonts/Roboto-Medium.ttf");
+        }
+        @font-face {
+            font-family: "Poppins-Medium";
+            src: url("fonts/Poppins-Medium.ttf");
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/search_bar.css">
+    
     <script src="js/index.js"></script>
 
 
@@ -33,18 +41,18 @@
 
     <header>
         <nav>
-            <div id="logo">
+            <div id="logo" title="Font'u değiştir">
                 <h1>Sync Notes</h1>
             </div>
 
             <div id="mid_nav">
                 
                 <div id="left_buttons">
-                    <div id="list_type_buttons" title="Sıralama tipleri" active="0">
-                        <i class="fa-solid fa-arrow-up-a-z fa-2xl"></i>
-                        <i class="hidden fa-solid fa-arrow-down-z-a fa-2xl"></i>
-                        <i class="hidden fa-solid fa-arrow-up fa-2xl"></i>
-                        <i class="hidden fa-solid fa-arrow-down fa-2xl"></i>
+                    <div id="list_type_buttons" active="0">
+                        <i id="az" title="A'dan Z'ye" class="fa-solid fa-arrow-up-a-z fa-2xl"></i>
+                        <i id="za" title="Z'den A'ya" class="hidden fa-solid fa-arrow-down-z-a fa-2xl"></i>
+                        <i id="ey" title="Eskiden yeniye" class="hidden fa-solid fa-arrow-up fa-2xl"></i>
+                        <i id="ye" title="Yeniden eskiye" class="hidden fa-solid fa-arrow-down fa-2xl"></i>
                         <!-- idk why but this i elements not working <-(0_0)->
                         <i class="hidden fa-solid fa-calendar-arrow-up fa-2xl"></i>
                         <i class="hidden fa-solid fa-calendar-arrow-down fa-2xl"></i> -->
@@ -58,9 +66,9 @@
 
                 <div id="right_buttons">
                     <div id="stat_list_buttons" active="0">
-                        <i class="fa-solid fa-list fa-2xl"></i>
-                        <i class="hidden fa-sharp fa-solid fa-circle-check fa-2xl"></i>
-                        <i class="hidden fa-solid fa-trash fa-2xl"></i>
+                        <i id="normal" title="Normal" class="fa-solid fa-list fa-2xl"></i>
+                        <i id="ends" title="Bitirilenler" class="hidden fa-sharp fa-solid fa-circle-check fa-2xl"></i>
+                        <i id="deletes" title="Silinenler" class="hidden fa-solid fa-trash fa-2xl"></i>
                     </div>
                     <div>
                         <i id="pick_date" title="" class="fa-solid fa-calendar-days fa-2xl"></i>
@@ -78,28 +86,12 @@
     </header>
 
     <main id="myGrid">
-        <!-- 
-        <div class="card">
-            <div class="top_bar_card">
-                <h3 contenteditable="true" onkeydown="enterDisable(event)" onblur="handleBlurOnH3(this)">Aceq Yapılacaklar Listesi şimdi buradan ooo...</h3>
-                <div class="top_bar_card_right_buttons">
-                    <div class="sync" title="Senkron">
-                        <i class="fa-solid fa-rotate fa-lg"></i>
-                    </div>
-                    <div class="finish_icon" title="Bitirililenler listesine ekle.">
-                        <i class="fa-sharp fa-solid fa-circle-check fa-lg"></i>
-                    </div>
-                    <div class="delete_icon" title="Sil">
-                        <i class="fa-solid fa-trash fa-lg"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="main_card" onclick="enableEditingForP(this, event)">
-                <p contenteditable="true" onclick="getLostPropagation(event)" onblur="handleBlurOnP(this)">1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-            </div>
-        </div>
-        -->
     </main>
+
+    <div id="emptyGrid">
+        <img src="imgs/empty-folder.png" alt="">
+        <b>Henüz not oluşturmamışsın gibi. Ya da uygulama hata mı verdi?</b>
+    </div>
 
 </body>
 </html>
