@@ -23,7 +23,7 @@ class card_class{
     public function getCardDiv($lang) {
         $ls_split = explode("|", $this->last_sync_date);
         $ls_split[0] = date($this->dateFormat, strtotime($ls_split[0]));
-        $one_piece = $ls_split[0] . " - " . $ls_split[1];
+        $one_piece = $ls_split[0] . "-" . $ls_split[1];
         
         if($lang == "TR") {
             $t0 = "Bitirilenler listesine ekle.";
@@ -67,7 +67,7 @@ class card_class{
                 </div>
             </div>
             <div class="main_card">
-                <textarea onblur="handleBlur(this)">'.$this->body.'</textarea>
+                <textarea class="textarea_writable" onblur="handleBlur(this)">'.$this->body.'</textarea>
             </div>
             <div class="end_card" style="background-color: rgb(205 195 146);">
                 <div title="'.$t2.'"><i class="fa-solid fa-calendar-days fa-xs"></i><p class="creation_date">'.date($this->dateFormat, strtotime($this->creation_date)).'</p></div>
@@ -81,7 +81,7 @@ class card_class{
                 <h3 class="h3hover_none">'.$this->head.'</h3>
             </div>
             <div class="main_card">
-                <p>'.$this->body.'</p>
+                <textarea readonly>'.$this->body.'</textarea>
             </div>
             <div class="end_card" style="background-color: rgb(75 187 75);">
                 <div title="'.$t2.'"><i class="fa-solid fa-calendar-days fa-xs"></i><p class="creation_date">'.date($this->dateFormat, strtotime($this->creation_date)).'</p></div>
@@ -95,7 +95,7 @@ class card_class{
                 <h3 class="h3hover_none">'.$this->head.'</h3>
             </div>
             <div class="main_card">
-                <p>'.$this->body.'</p>
+                <textarea readonly>'.$this->body.'</textarea>
             </div>
             <div class="end_card" style="background-color: rgb(207 78 78);">
                 <div title="'.$t2.'"><i class="fa-solid fa-calendar-days fa-xs"></i><p class="creation_date">'.date($this->dateFormat, strtotime($this->creation_date)).'</p></div>

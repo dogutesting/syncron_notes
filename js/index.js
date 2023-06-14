@@ -110,7 +110,7 @@ var localeEN = {
 
     function handleBlurOnH3(element) { //old
         element.contentEditable = false;
-        refresh = false;
+        refreshable = false;
         var card = $(element).parent().parent();
         var h3_data_id = $(card).attr("data-id");
 
@@ -175,6 +175,30 @@ var localeEN = {
         });
     }
 
+    /* function checkRefreshable() {
+        if (refreshable) {
+            return true;
+        }
+        else {
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "": function() {
+                        console.log("");
+                        $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+            return false;
+        }
+    } */
+
     $(function() {
 
         $(window).on('beforeunload', function() {
@@ -186,8 +210,7 @@ var localeEN = {
             "Roboto-Medium",
             "Pangolin-Regular",
             "Poppins-Medium"
-        ];
-    
+        ];    
 
         $("#logo").on("click", () => {
             setFont(true);
@@ -224,7 +247,7 @@ var localeEN = {
                 aI = 0;
             }
             for(var i=0; i<list_type_buttons.length; i++) {
-               $(list_type_buttons[i]).addClass("hidden");
+            $(list_type_buttons[i]).addClass("hidden");
             }
             $(list_type_buttons[aI]).removeClass("hidden");
 
@@ -246,23 +269,23 @@ var localeEN = {
 
         $("#stat_list_buttons").on("click", function() {
             var aI = parseInt($(this).attr("active"));
-            aI += 1;
-            if(aI + 1 > stat_list_buttons.length) {
-                aI = 0;
-            }
-            for(var i=0; i<stat_list_buttons.length; i++) {
-               $(stat_list_buttons[i]).addClass("hidden");
-            }
-            $(stat_list_buttons[aI]).removeClass("hidden");
+                aI += 1;
+                if(aI + 1 > stat_list_buttons.length) {
+                    aI = 0;
+                }
+                for(var i=0; i<stat_list_buttons.length; i++) {
+                $(stat_list_buttons[i]).addClass("hidden");
+                }
+                $(stat_list_buttons[aI]).removeClass("hidden");
 
-            $(this).attr("active", aI);
-            
-            var preference = {
-                key : "statDesc",
-                value : aI
-            }
-            setCookies(preference);
-            showCards();
+                $(this).attr("active", aI);
+                
+                var preference = {
+                    key : "statDesc",
+                    value : aI
+                }
+                setCookies(preference);
+                showCards();
         });
         function selectStatListButton(index) {            
             for(var i=0; i<stat_list_buttons.length; i++) {
@@ -391,6 +414,7 @@ var localeEN = {
             //solution 2: add card directly to main and mysql database
             $.ajax({
                 url: 'php/add_card.php',
+                data: {"locale": getCookies("locale")},
                 type: 'POST',
                 success: function(response) {
                     var jsonData = JSON.parse(response);
@@ -435,7 +459,7 @@ var localeEN = {
         });
 
         var typingTimeout;
-        $("body").on("input", "textarea", function() {
+        $("body").on("input", ".textarea_writable", function() {
             clearTimeout(typingTimeout);
 
             refreshable = false;
@@ -464,7 +488,7 @@ var localeEN = {
                         }
                     }
                 });
-            }, 2500);
+            }, 2000);
         });
 
         var typingTimeoutForH3;
@@ -498,7 +522,7 @@ var localeEN = {
                         }
                     }
                 });
-            }, 2500);
+            }, 2000);
         });
 
         $("#search_input").on("keyup", function(event) {
@@ -732,9 +756,6 @@ var localeEN = {
             .catch(function(error) {
                 bigError();
             });
-           
-            
-            
         }
 
         function showCards() {

@@ -114,10 +114,22 @@
         }
 
         //add unkown row
-        public function add_row() {
-            $head = "Başlık yazın.";
-            $body = "İçerik yazın.";
+        public function add_row($locale) {
+            $locale = mysqli_real_escape_string($this->conn, $locale);
             $stat = "normal";
+
+            if($locale == "TR") {
+                $head = "Bir başlık yazın.";
+                $body = "İçerik yazın.";
+            }
+            if($locale == "EN") {
+                $head = "Type a title.";
+                $body = "Type content.";
+            }
+            if($locale == "DE") {
+                $head = "Eine Überschrift eingeben.";
+                $body = "Inhalte schreiben.";
+            }
 
             $t = time();
             $creation_date = date("Y-m-d", $t);
@@ -139,7 +151,7 @@
                                              $sync_date_one_piece,
                                              $stat);
                 $rData["error"] = false;
-                $rData["card"] = $createCard->getCardDiv();
+                $rData["card"] = $createCard->getCardDiv($locale);
             }
             else {
                 $rData["error"] = true;

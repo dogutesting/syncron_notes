@@ -21,28 +21,59 @@
         }
     </style>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons_io/favicon-16x16.png">
+
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
     
-    <script src="js/index.js"></script>
-
+    <!-- <link defer rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+     -->
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <script src="js/index.js"></script>
 
+    <!-- <script>
+        $( function() {
+            //! refreshable test idea
+            // Dialog'u oluştur
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "": function() {
+                        console.log("");
+                        $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        });
+    </script> -->
 </head>
 <body>
-    
+
+    <!-- <div id="dialog-confirm" title="Değişiklikler Kaydedilmedi!">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Devam ederseniz notlarınız kaydedilmeyebilir. Notlarınız senkron olurken lütfen bekleyin. </p>
+    </div> -->
 
     <header>
         <nav>
             <div id="logo" title="Font'u değiştir">
                 <h1>Sync Notes</h1>
+                <img src="imgs/notepad.png" alt="LOGO">
             </div>
 
             <div id="mid_nav">
@@ -62,7 +93,10 @@
                     </div>
                 </div>
                 
-                <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">                    
+                <div id="search_cont">
+                    <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">                    
+                    <i class="fa-solid fa-gear fa-2xl" style="color: #ffffff;"></i>
+                </div>
 
                 <div id="right_buttons">
                     <div id="stat_list_buttons" active="0">
@@ -82,6 +116,10 @@
                 <img src="imgs/en.png" alt="English Language">
                 <img src="imgs/de.png" alt="Deutsche Sprache">
             </div>
+
+            <div id="single_flag">
+                <img src="imgs/flag.png">
+            </div>
         </nav>
     </header>
 
@@ -90,7 +128,7 @@
 
     <div id="emptyGrid">
         <img src="imgs/empty-folder.png" alt="">
-        <b>Henüz not oluşturmamışsın gibi. Ya da uygulama hata mı verdi?</b>
+        <b style="margin-top: 10px; color: white;">Henüz not oluşturmamışsın gibi. Ya da uygulama hata mı verdi?</b>
     </div>
 
 </body>
