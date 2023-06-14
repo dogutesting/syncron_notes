@@ -657,6 +657,32 @@ var localeEN = {
             
         }
 
+        var flags_modal = $("#flags_modal");
+        $("#flags_0").on("click", () => {
+            var langObj = {key: "locale", value: ""}
+            flags_modal.css("display", "none");
+            langObj.value = "TR";
+            setCookies(langObj);
+            setFrontLanguages();
+            showCards();
+        });
+        $("#flags_1").on("click", () => {
+            var langObj = {key: "locale", value: ""}
+            flags_modal.css("display", "none");
+            langObj.value = "EN";
+            setCookies(langObj);
+            setFrontLanguages();
+            showCards();
+        });
+        $("#flags_2").on("click", () => {
+            var langObj = {key: "locale", value: ""}
+            flags_modal.css("display", "none");
+            langObj.value = "DE";
+            setCookies(langObj);
+            setFrontLanguages();
+            showCards();
+        });
+
         $("#lang_buttons img").click(function() {
             var imgDizi = $("#lang_buttons img");
             var tiklananIndex = imgDizi.index(this);

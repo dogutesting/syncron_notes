@@ -331,15 +331,7 @@ main {
 .hidden {
     display: none;
 }
-#search_cont {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-#search_cont i{
-    padding-left: 5px;
-    display: none;
-}
+
 #search_input {
     border: none;
     outline: none;
@@ -440,14 +432,21 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     .card {
         animation: fadeIn-600 0.6s ease;
     }
-    #left_buttons {
-        display: none;
+    #logo img {
+        height: 25px;
+        width: 25px;
+        /* padding: 10px; */
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
-    #right_buttons {
-        display: none;
+    #single_flag img{
+        height: 30px;
     }
-    #search_cont i {
-        display: block;
+}
+
+@media only screen and (max-width: 580px) {
+    #search_input {
+        width: 280px;
     }
 }
 

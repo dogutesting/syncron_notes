@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="js/modal.js"></script>
     
     <!-- <link defer rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
@@ -40,34 +42,23 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="js/index.js"></script>
-
-    <!-- <script>
-        $( function() {
-            //! refreshable test idea
-            // Dialog'u oluştur
-            $( "#dialog-confirm" ).dialog({
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "": function() {
-                        console.log("");
-                        $( this ).dialog( "close" );
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            });
-        });
-    </script> -->
 </head>
 <body>
 
-    <!-- <div id="dialog-confirm" title="Değişiklikler Kaydedilmedi!">
-        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Devam ederseniz notlarınız kaydedilmeyebilir. Notlarınız senkron olurken lütfen bekleyin. </p>
-    </div> -->
+    <div id="flags_modal" class="modal">
+        <div class="modal-content">
+            <div class="top_modal">
+                <img src="imgs/languages.png" alt="">
+                <span class="close">&times;</span>
+            </div>
+            <hr>
+            <div id="flags_container">
+                <img id="flags_0" src="imgs/tr.png" alt="Türkçe Dil Desteği">
+                <img id="flags_1" src="imgs/en.png" alt="English Language">
+                <img id="flags_2" src="imgs/de.png" alt="Deutsche Sprache">
+            </div>
+        </div>
+    </div>
 
     <header>
         <nav>
@@ -89,14 +80,11 @@
                         <i class="hidden fa-solid fa-calendar-arrow-down fa-2xl"></i> -->
                     </div>
                     <div id="add_card_button" title="Not ekle">
-                        <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                        <i id="acb" class="fa-solid fa-circle-plus fa-2xl"></i>
                     </div>
                 </div>
                 
-                <div id="search_cont">
                     <input id="search_input" type="search" placeholder="Notlarınızda arama yapın.">                    
-                    <i class="fa-solid fa-gear fa-2xl" style="color: #ffffff;"></i>
-                </div>
 
                 <div id="right_buttons">
                     <div id="stat_list_buttons" active="0">
