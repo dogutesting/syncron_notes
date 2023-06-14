@@ -53,6 +53,9 @@ Not oluşturma uygulaması.
 - PHP
 - MySQL
 
+### External icons used:
+- [ICONS](#icons)
+
 ### Installation:
 - Download and install a web server package. For example, XAMPP: https://www.apachefriends.org/index.html
 - Copy this repository into the xampp/htdocs folder.
@@ -75,6 +78,9 @@ Not oluşturma uygulaması.
 - JavaScript (+jQuery)
 - PHP
 - MySQL
+
+### Externe Symbole verwendet:
+- [ICONS](#icons)
 
 ### Installation:
 - Laden Sie ein Webserver-Paket herunter und installieren Sie es. Zum Beispiel XAMPP: https://www.apachefriends.org/index.html
