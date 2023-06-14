@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 05 Haz 2023, 19:24:18
+-- Üretim Zamanı: 14 Haz 2023, 19:34:46
 -- Sunucu sürümü: 10.4.27-MariaDB
 -- PHP Sürümü: 8.2.0
 
@@ -32,7 +32,7 @@ CREATE TABLE `notes` (
   `head` text NOT NULL,
   `body` text NOT NULL,
   `stat` varchar(10) NOT NULL,
-  `creation_date` text NOT NULL,
+  `creation_date` date NOT NULL,
   `last_sync_date` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Sync notes';
 
@@ -41,9 +41,13 @@ CREATE TABLE `notes` (
 --
 
 INSERT INTO `notes` (`id_notes`, `head`, `body`, `stat`, `creation_date`, `last_sync_date`) VALUES
-(1, 'Hafta sonu yapılacak şeyler', '-Ev temizliği<br>\n-Kedi maması alınacak\n<br>\n/* \n        arrow function\'da \"this\" anahtar kelimesi çalışmıyormuş\n        onun yerine \"event.currentTarget\" kullanılmalıymış.\n        $(\"h3\").on(\"mouseenter\", (event) => {\n            log($(event.currentTarget).attr(\"id\"));\n        }) \n    \n        $(\"h3\").on(\"mouseenter\", function(event) => {\n            log($(this).attr(\"id\"));\n        }) \n        */', 'normal', '05.06.23', '05.06.23'),
-(2, 'Aceq Yapılacaklar Listesi şimdi buradan ooo', '1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', 'normal', '05.06.23', ''),
-(3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Nullam eleifend blandit gravida. Vivamus mauris nibh, imperdiet nec finibus sed, pretium id sapien. Curabitur in ipsum ligula. Nullam feugiat imperdiet blandit. Nunc ultricies neque semper augue bibendum elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus est metus, venenatis vitae lectus sed, scelerisque volutpat dui. Morbi ut velit sem.', 'normal', '05.06.23', '');
+(165, 'Öğrenilecek dillerin listesi', '-İngilizce\n-Almanca\n-C++\n-Javascript\n-Nodejs\n-Go\n-PHP', 'normal', '2023-06-12', '2023-06-14|18:27:37'),
+(166, 'Alışveriş Listesi', '-Mouse (tuşu bozuldu)\n-Bluetooth usb (gamepad\'i bağlamak için)\n-Bir şey daha vardı unuttum hatırlayınca geri yazacam. (Edit: hatırlamadı)\n', 'normal', '2023-06-13', '2023-06-14|19:17:29'),
+(182, 'Sync Notes İçin Yapılacaklar', '-Tasarımını düzenle\n-Dil desteği ekle\n-Hataları bul ve düzelt ', 'delete', '2023-06-13', '2023-06-14|17:58:52'),
+(183, 'Sevdiğim bazı kitaplar', '> Denemeler - Montaigne\n\n> Sokrates\'in Savunması, Devlet - Platon\n\n> İrade Terbiyesi - Jules Payot\n\n> Bilim İle Sohbet Popüler Bilim Yazıları - Celal Şengör', 'finish', '2023-06-14', '2023-06-14|15:43:13'),
+(186, 'web technology <3', 'html + css(?) +\njs(jquery) + \nphp(?laravel)', 'delete', '2023-06-14', '2023-06-14|15:45:50'),
+(192, 'Bir başlık yazın.', 'İçerik yazın.', 'normal', '2023-06-14', '2023-06-14|19:17:26'),
+(193, 'Bir başlık yazın.', 'İçerik yazın.', 'normal', '2023-06-14', '2023-06-14|19:32:20');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -63,7 +67,7 @@ ALTER TABLE `notes`
 -- Tablo için AUTO_INCREMENT değeri `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id_notes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_notes` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
